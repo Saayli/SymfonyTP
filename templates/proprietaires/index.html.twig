@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CategoriesController!{% endblock %}
+
+{% block body %}
+    <div class="example-wrapper">
+        <h1>Gestion des propriétaires BDD</h1>
+        <table class="table table-striped">
+            <tr>
+                <th>Nom</th>
+                <th></th>
+            </tr>
+            {% for p in proprietaires %}
+                <tr>
+                    <td>{{ p.Nom }}</td>
+                    <td><a href="{{ path('modifier_proprietaire', {"id":p.id}) }}" class="btn btn-primary">Modifier</a>
+                        <a href="{{ path('proprietaire_supprimer', {"id":p.id}) }}" class="btn btn-danger">Supprimer</a>
+                        <a href="{{ path('chatons_proprietaire_afficher', {"id":p.id}) }}" class="btn btn-warning">Chatons</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+        <a href="{{ path('ajouter_proprietaire') }}" class="btn btn-primary">Ajouter un propriétaire</a>
+    </div>
+
+{% endblock %}
